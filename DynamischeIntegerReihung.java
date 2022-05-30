@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.*;
 
 class DynIntArray 
 {
@@ -38,13 +37,14 @@ class DynIntArray
             { 
                 da = new DIAlist(); 
             }
-            da.add(4); da.add(8); da.add(10); da.add(1); da.print();
+            da.add(4); da.add(8); da.add(10); da.add(1); da.print(); 
             da.setElementAt(0, 0); da.add(5);
             da.setElementAt(2, da.getElementAt(2) + 10); da.print();
             System.out.println("DIA: elements=" + da.getElementCount() +
             " da[4]=" + da.getElementAt(4) +
             " da[9]=" + da.getElementAt(9));
         }
+        
     }
 }
 
@@ -101,41 +101,74 @@ class DIAarray extends DynIntArray
     
 class DIAlist extends DynIntArray
 {
-    private List <Integer> list = new ArrayList<Integer>();
-    private int Anzahl = 0;
+    //public DIAlist list;
+    public node head = null;
 
-    void add(int e) 
+    class node
     {
-        list.add(e);
-        Anzahl++;
-    }
-    
-    void setElementAt(int i, int e) 
-    {
-        if(i<=Anzahl-1)
+        private int data;
+        private node next;
+
+        node (int data)
         {
-            list.set(i,e);
+            this.data = data;
+            this.next = null;
         }
     }
-    int getElementAt(int i) 
+    
+
+    public void add(int e) 
     {
-        if(i<=Anzahl-1)
+        node newNode = new node(e);
+
+        if(this.head == null)
         {
-            return list.get(i);
+            this.head = newNode;
         }
         else
         {
-            return 0;
+            node last = this.head;
+            while(last.next!=null)
+            {
+                last = last.next;
+            }
+            last.next = newNode;
         }
+    }
+    void setElementAt(int i, int e) 
+    {
+        //node set = list.head;
+    }
+    int getElementAt(int i) 
+    {
+        return 0; 
     }
     int getElementCount() 
     {
-        return Anzahl; 
+        return 0; 
     }
     void print() 
     {
-        //geht auch mit for Schleife bis Anzahl
-        System.out.println(Arrays.toString(list.toArray()));
+        if (this.head == null) 
+        {
+			System.out.println("Liste leer");
+		} 
+        else 
+        {
+			node cur = this.head;
+            System.out.print("[");
+			while (cur != null) 
+            {
+				System.out.print(cur.data );
+                if(cur.next != null)
+                {
+                    System.out.print(", ");
+                }
+				cur = cur.next;
+			}
+            System.out.print("]");
+            System.out.println("");
+		}
     }
 
 }
