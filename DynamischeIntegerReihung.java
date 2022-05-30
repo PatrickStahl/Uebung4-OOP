@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.*;
 
 class DynIntArray 
 {
@@ -57,21 +58,16 @@ class DIAarray extends DynIntArray
     {
         if(Anzahl == Kapazität)
         {
-            extend();
+            int temp[] = new int[Kapazität+1];
+            for(int i = 0; i<Kapazität; i++)
+            {
+                temp[i]= Array[i];
+            }
+            Array = temp;
+            Kapazität = Kapazität +1;
         }
         Array[Anzahl] = e;
         Anzahl++;
-    }
-
-    void extend()
-    {
-        int temp[] = new int[Kapazität+1];
-        for(int i = 0; i<Kapazität; i++)
-        {
-            temp[i]= Array[i];
-        }
-        Array = temp;
-        Kapazität = Kapazität +1;
     }
     
     void setElementAt(int i, int e) 
@@ -98,11 +94,48 @@ class DIAarray extends DynIntArray
     }
     void print() 
     {
+        //geht auch mit for Schleife bis Anzahl
         System.out.println(Arrays.toString(Array));
     }
 }
     
 class DIAlist extends DynIntArray
 {
+    private List <Integer> list = new ArrayList<Integer>();
+    private int Anzahl = 0;
+
+    void add(int e) 
+    {
+        list.add(e);
+        Anzahl++;
+    }
+    
+    void setElementAt(int i, int e) 
+    {
+        if(i<=Anzahl-1)
+        {
+            list.set(i,e);
+        }
+    }
+    int getElementAt(int i) 
+    {
+        if(i<=Anzahl-1)
+        {
+            return list.get(i);
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    int getElementCount() 
+    {
+        return Anzahl; 
+    }
+    void print() 
+    {
+        //geht auch mit for Schleife bis Anzahl
+        System.out.println(Arrays.toString(list.toArray()));
+    }
 
 }
