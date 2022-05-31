@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 class DynIntArray 
 {
     void add(int e) 
@@ -39,8 +37,6 @@ class DynIntArray
             }
             da.add(4); da.add(8); da.add(10); da.add(1); da.print(); 
             da.setElementAt(0, 0); da.add(5);
-            //System.out.println("");
-            //System.out.println(da.getElementAt(3));
             da.setElementAt(2, da.getElementAt(2) + 10); da.print();
             System.out.println("DIA: elements=" + da.getElementCount() +
             " da[4]=" + da.getElementAt(4) +
@@ -97,7 +93,19 @@ class DIAarray extends DynIntArray
     void print() 
     {
         //geht auch mit for Schleife bis Anzahl
-        System.out.println(Arrays.toString(Array));
+        System.out.print("[");
+        for(int i = 0; i<Anzahl; i++)
+        {
+            System.out.print(Array[i]);
+            if(i<Anzahl-1)
+            {
+                System.out.print(", ");
+            }
+        }
+        System.out.print("]");
+        System.out.println("");
+
+        //System.out.println(Arrays.toString(Array));
     }
 }
     
