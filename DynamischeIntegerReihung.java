@@ -153,7 +153,7 @@ class DIAlist extends DynIntArray
         node set = this.head;
         int count = 0;
         //geht Liste durch und ersetzt, wenn ntes Element gleich i ist
-        while(set.next !=null)
+        while(set!=null)
         {
             if(count == i)
             {
@@ -163,12 +163,6 @@ class DIAlist extends DynIntArray
             set = set.next;
             count++;
         }
-        //falls man das letzte Element ändern will
-        if((set.next==null) && (count==i))
-        {
-            set.data = e;
-            return;
-        }
     }
     int getElementAt(int i) 
     {
@@ -176,7 +170,7 @@ class DIAlist extends DynIntArray
         int count = 0;
 
         //basically genau der Setter
-        while(get.next!=null)
+        while(get!=null)
         {
             if(count==i)
             {
@@ -185,15 +179,9 @@ class DIAlist extends DynIntArray
             count++;
             get = get.next;
         }
-        if((get.next==null) && (count==i))
-        {
-            return get.data;
-        }
-        else
-        {
-            //gesuchtes Element nicht vorhanden
-            return 0; 
-        }
+        //Element nicht vorhanden
+        return 0; 
+        
     }
     int getElementCount() 
     {
