@@ -218,5 +218,4 @@ class DIAlist extends DynIntArray
             System.out.println("");
 		}
     }
-
 }
