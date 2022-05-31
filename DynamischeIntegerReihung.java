@@ -92,7 +92,6 @@ class DIAarray extends DynIntArray
     }
     void print() 
     {
-        //geht auch mit for Schleife bis Anzahl
         System.out.print("[");
         for(int i = 0; i<Anzahl; i++)
         {
@@ -105,20 +104,21 @@ class DIAarray extends DynIntArray
         System.out.print("]");
         System.out.println("");
 
+        //der hätte es einfacher gemacht aber wir sollen ja keine vorgefertigten Klassen implementieren
         //System.out.println(Arrays.toString(Array));
     }
 }
     
 class DIAlist extends DynIntArray
 {
-    //public DIAlist list;
-    public node head = null;
+    private node head = null;
 
     class node
     {
         private int data;
         private node next;
 
+        //Konstruktor für Knoten
         node (int data)
         {
             this.data = data;
@@ -126,20 +126,23 @@ class DIAlist extends DynIntArray
         }
     }
     
-
+    //an letzte Stelle einfügen
     public void add(int e) 
     {
         node newNode = new node(e);
 
+        //falls newNode das erste Element ist
         if(this.head == null)
         {
             this.head = newNode;
         }
         else
         {
+            //Knoten der die Liste bis zum Ende durchwandert
             node last = this.head;
             while(last.next!=null)
             {
+                //Knoten wird auf eigenen Nachfolger gesetzt
                 last = last.next;
             }
             last.next = newNode;
@@ -172,7 +175,7 @@ class DIAlist extends DynIntArray
         node get = this.head;
         int count = 0;
 
-        //Getter, der genauso wie der Setter aufgebaut ist
+        //basically genau der Setter
         while(get.next!=null)
         {
             if(count==i)
@@ -180,7 +183,7 @@ class DIAlist extends DynIntArray
                 return get.data;
             }
             count++;
-            get=get.next;
+            get = get.next;
         }
         if((get.next==null) && (count==i))
         {
@@ -188,20 +191,20 @@ class DIAlist extends DynIntArray
         }
         else
         {
+            //gesuchtes Element nicht vorhanden
             return 0; 
         }
     }
     int getElementCount() 
     {
         int count = 0;
-        node node = this.head;
+        node current = this.head;
 
-        while(node.next!=null)
+        while(current!=null)
         {
             count++;
-            node = node.next;
+            current = current.next;
         }
-        count++;
         return count; 
     }
     void print() 
@@ -212,16 +215,16 @@ class DIAlist extends DynIntArray
 		} 
         else 
         {
-			node cur = this.head;
+			node current = this.head;
             System.out.print("[");
-			while (cur != null) 
+			while (current != null) 
             {
-				System.out.print(cur.data );
-                if(cur.next != null)
+				System.out.print(current.data);
+                if(current.next != null)
                 {
                     System.out.print(", ");
                 }
-				cur = cur.next;
+				current = current.next;
 			}
             System.out.print("]");
             System.out.println("");
