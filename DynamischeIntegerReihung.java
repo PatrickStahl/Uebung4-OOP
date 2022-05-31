@@ -39,6 +39,8 @@ class DynIntArray
             }
             da.add(4); da.add(8); da.add(10); da.add(1); da.print(); 
             da.setElementAt(0, 0); da.add(5);
+            //System.out.println("");
+            //System.out.println(da.getElementAt(3));
             da.setElementAt(2, da.getElementAt(2) + 10); da.print();
             System.out.println("DIA: elements=" + da.getElementCount() +
             " da[4]=" + da.getElementAt(4) +
@@ -137,15 +139,62 @@ class DIAlist extends DynIntArray
     }
     void setElementAt(int i, int e) 
     {
-        //node set = list.head;
+        node set = this.head;
+        int count = 0;
+        //geht Liste durch und ersetzt, wenn ntes Element gleich i ist
+        while(set.next !=null)
+        {
+            if(count == i)
+            {
+                set.data = e;
+                return;
+            }
+            set = set.next;
+            count++;
+        }
+        //falls man das letzte Element ändern will
+        if((set.next==null) && (count==i))
+        {
+            set.data = e;
+            return;
+        }
     }
     int getElementAt(int i) 
     {
-        return 0; 
+        node get = this.head;
+        int count = 0;
+
+        //Getter, der genauso wie der Setter aufgebaut ist
+        while(get.next!=null)
+        {
+            if(count==i)
+            {
+                return get.data;
+            }
+            count++;
+            get=get.next;
+        }
+        if((get.next==null) && (count==i))
+        {
+            return get.data;
+        }
+        else
+        {
+            return 0; 
+        }
     }
     int getElementCount() 
     {
-        return 0; 
+        int count = 0;
+        node node = this.head;
+
+        while(node.next!=null)
+        {
+            count++;
+            node = node.next;
+        }
+        count++;
+        return count; 
     }
     void print() 
     {
