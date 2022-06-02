@@ -1,6 +1,5 @@
 class Einwohner
 {
-    //muss hier public sein damit die extended Klassen das lesen können
     public int einkommen;
     void setEinkommen(int einkommen)
     {
@@ -25,7 +24,6 @@ class Einwohner
 
 class Adel extends Einwohner
 {
-    //private int einkommen;
     public int steuer()
     {
         if(zuVersteuerndesEinkommen()<=20)
@@ -38,7 +36,6 @@ class Adel extends Einwohner
 
 class Koenig extends Einwohner
 {
-    //private int einkommen;
     public int steuer()
     {
         return 0;
@@ -62,9 +59,8 @@ public class Königreich
 {
     public static void main(String[] args) 
     {
-        Leibeigener peter = new Leibeigener();
-        peter.setEinkommen(90);
-        System.out.println(peter.steuer());
-        
+        Leibeigener Wolfram = new Leibeigener();
+        Wolfram.setEinkommen(3);
+        System.out.println("Steuer: " + Wolfram.steuer() + " Gulden");
     }
 }
