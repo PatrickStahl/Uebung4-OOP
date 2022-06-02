@@ -54,6 +54,7 @@ class DIAarray extends DynIntArray
 
     void add(int e) 
     {
+        //vergrößert Array wenn es voll ist
         if(Anzahl == Kapazität)
         {
             int temp[] = new int[Kapazität+1];
@@ -62,7 +63,7 @@ class DIAarray extends DynIntArray
                 temp[i]= Array[i];
             }
             Array = temp;
-            Kapazität = Kapazität +1;
+            Kapazität++;
         }
         Array[Anzahl] = e;
         Anzahl++;
